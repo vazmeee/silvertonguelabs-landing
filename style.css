@@ -350,3 +350,62 @@ footer .social-links a {
 footer .social-links a:hover {
   color: #ff4c4c;
 }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  header nav {
+    display: none;
+  }
+
+  header .logo {
+    margin: auto;
+  }
+
+  #hero h2 {
+    font-size: 36px;
+  }
+
+  #hero p {
+    font-size: 18px;
+  }
+
+  #hero .btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  #about h2,
+  #projects h2,
+  #team h2,
+  #contact h2 {
+    font-size: 28px;
+  }
+
+  #about p,
+  #projects p,
+  #team p {
+    font-size: 16px;
+  }
+
+  #projects .project,
+  #team .team-member {
+    width: 100%;
+  }
+
+  .contact-form input {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .contact-form p {
+    display: block;
+  }
+
+  .scroll-overlay {
+    font-size: 0.8em;
+  }
+
+  .scroll-arrow {
+    display: none;
+  }
+}

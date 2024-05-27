@@ -28,3 +28,8 @@ function resizeVideo() {
 window.addEventListener('resize', resizeVideo);
 window.addEventListener('load', resizeVideo);
 window.addEventListener('loadedmetadata', resizeVideo);
+
+// Handle orientation change on mobile devices
+window.addEventListener('orientationchange', () => {
+    setTimeout(resizeVideo, 100);
+});
