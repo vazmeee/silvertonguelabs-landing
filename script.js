@@ -33,3 +33,14 @@ window.addEventListener('loadedmetadata', resizeVideo);
 window.addEventListener('orientationchange', () => {
     setTimeout(resizeVideo, 100);
 });
+
+// Enable video playback on mobile devices
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('responsiveVideo');
+    video.play().catch(error => {
+        console.log('Autoplay prevented, enabling on user interaction');
+        document.body.addEventListener('click', () => {
+            video.play();
+        }, { once: true });
+    });
+});
