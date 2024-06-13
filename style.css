@@ -131,6 +131,15 @@ header a:hover {
   color: #fff;
 }
 
+header fixed-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #ff4c4c;
+  /* Ensure background is set for better visibility */
+}
+
 /* Hero Section Styles */
 #hero {
   background: #000;
@@ -180,7 +189,7 @@ header a:hover {
 }
 
 #about h2 {
-  font-size: 36px;
+  font-size: 46px;
   margin-bottom: 20px;
   color: #ff4c4c;
   font-weight: 700;
@@ -205,18 +214,25 @@ header a:hover {
 }
 
 #projects h2 {
-  font-size: 36px;
+  font-size: 46px;
   margin-bottom: 20px;
   color: #ff4c4c;
   font-weight: 700;
+  width: 100%;
 }
 
-#projects .project {
-  display: inline-block;
+#projects .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.project {
+  flex: 1 1 30%;
   margin: 20px;
+  box-sizing: border-box;
   vertical-align: top;
   text-align: left;
-  width: 30%;
 }
 
 #projects h3 {
@@ -242,18 +258,25 @@ header a:hover {
 }
 
 #team h2 {
-  font-size: 36px;
+  font-size: 46px;
   margin-bottom: 20px;
   color: #ff4c4c;
   font-weight: 700;
+  width: 100%;
 }
 
-#team .team-member {
-  display: inline-block;
+#team .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.team-member {
+  flex: 1 1 30%;
   margin: 20px;
+  box-sizing: border-box;
   vertical-align: top;
   text-align: left;
-  width: 30%;
 }
 
 #team h3 {
@@ -280,7 +303,7 @@ header a:hover {
 }
 
 #contact h2 {
-  font-size: 30px;
+  font-size: 40px;
   margin-bottom: 20px;
   color: #ff4c4c;
   font-weight: 700;
@@ -306,12 +329,13 @@ header a:hover {
   font-size: 16px;
   text-transform: uppercase;
   width: auto;
-  /* Set width to auto for desktop */
+  color: #ff4c4c;
+  /* Ensure text color is always visible */
 }
 
 .contact-form input::placeholder {
   color: #ff4c4c;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .contact-form input:focus {
@@ -327,7 +351,7 @@ header a:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 26px;
   font-weight: 700;
   text-transform: uppercase;
   margin-top: 20px;
@@ -379,7 +403,7 @@ footer .social-links a:hover {
   }
 
   #hero h2 {
-    font-size: 36px;
+    font-size: 46px;
   }
 
   #hero p {
@@ -395,7 +419,7 @@ footer .social-links a:hover {
   #projects h2,
   #team h2,
   #contact h2 {
-    font-size: 28px;
+    font-size: 38px;
   }
 
   #about p,
@@ -457,4 +481,12 @@ footer .social-links a:hover {
     width: auto;
     flex: 1;
   }
+}
+
+/* New Styles for Navbar Fixed Top on Scroll */
+header bottom-nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
 }
