@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 function resizeVideo() {
     const video = document.getElementById('responsiveVideo');
     const container = video.parentElement;
@@ -67,24 +69,58 @@ document.addEventListener('DOMContentLoaded', () => {
             email: document.getElementById('email').value
         };
 
-        fetch('http://localhost:5000/add-to-airtable', {
+        fetch(process.env.SILVERTONGUE_API_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
         })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Record added successfully');
-                } else {
-                    alert('Something went wrong. Try again later');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Something went wrong. Try again later');
+        .then(response => {
+            return response.json().then(data => {
+                return { status: response.status, body: data };
             });
+        })
+        .then(res => {
+            const message = res.body.data.message;
+            const statusCode = res.status;
+            let color;
+
+            switch (statusCode) {
+                case 201:
+                    color = 'green';
+                    break;
+                case 500:
+                    color = 'red';
+                    break;
+                default:
+                    color = 'blue';
+                    break;
+            }
+
+            showAlert(message, color);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showAlert('Something went wrong. Try again later', 'red');
+        });
     });
 });
+
+function showAlert(message, color) {
+    const alertBox = document.createElement('div');
+    alertBox.textContent = message;
+    alertBox.style.backgroundColor = color;
+    alertBox.style.color = '#fff';
+    alertBox.style.padding = '15px';
+    alertBox.style.position = 'fixed';
+    alertBox.style.top = '20px';
+    alertBox.style.right = '20px';
+    alertBox.style.zIndex = '1000';
+    alertBox.style.borderRadius = '5px';
+    document.body.appendChild(alertBox);
+
+    setTimeout(() => {
+        alertBox.remove();
+    }, 5000);
+}
